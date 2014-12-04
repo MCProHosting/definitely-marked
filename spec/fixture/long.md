@@ -1,12 +1,12 @@
 @section =simple
 
-Simple section here.
+Simple section *here*.
 
 @section {}code
 
 ```json
 {
-    "foo": "bar"
+    "foo": "bar",
     "baz": [1, 2, 3]
 }
 ```
@@ -14,22 +14,22 @@ Simple section here.
 @section {}code2
 
 {
-    "foo": "bar"
+    "foo": "bar",
     "baz": [1, 2, 3]
 }
 
 @section []list
 
-One fish
+*One* fish
 
 @section []list
 
-Two fish
+**Two** fish
 
 @section []list
 
-Red fish
+# Red fish
 
 @section []list
 
-Blue fish
+## Blue fish

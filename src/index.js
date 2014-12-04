@@ -6,9 +6,9 @@ var MarkedError = require('./error');
 var sectionDelimiter = '@section';
 // A mapping of types to Section handlers.
 var sectionTypes = {
-    '=': require('./section.text'),
-    '{}': require('./section.json'),
-    '[]': require('./section.array')
+    '=': require('./sections/text'),
+    '{}': require('./sections/json'),
+    '[]': require('./sections/array')
 };
 
 
@@ -31,7 +31,7 @@ class Marked {
      */
     read (file: string, callback: Function) {
         fs.readFile(file, (function (err: Error, results: Buffer) {
-            if (typeof err !== 'undefined') {
+            if (err) {
                 return callback(err);
             }
             
@@ -63,7 +63,7 @@ class Marked {
                 
                 // Then update the name this this new named section, and reset
                 // the building string.
-                buildingName = line.slice(sectionDelimiter).trim();
+                buildingName = line.slice(sectionDelimiter.length).trim();
                 buildingStr = '';
                 return;
             }
